@@ -1,0 +1,4 @@
+- name: run rosboshop
+  ansible.builtin.debug:
+    roles:
+      - "{{ ROLE_NAME}}"
