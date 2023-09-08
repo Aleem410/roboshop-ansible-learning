@@ -1,0 +1,3 @@
+- name: demo mongo
+  ansible.builtin.debug:
+    msg: mongo
