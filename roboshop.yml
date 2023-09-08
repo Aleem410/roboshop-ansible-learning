@@ -1,4 +1,4 @@
 - name: run rosboshop
-  ansible.builtin.debug:
-    roles:
-      - "{{ ROLE_NAME}}"
+  hosts: all
+  roles:
+    - "{{ ROLE_NAME}}"
