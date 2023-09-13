@@ -1,4 +1,4 @@
 - name: run rosboshop
-  hosts: localhost
+  hosts: all
   roles:
     - "{{ ROLE_NAME}}"

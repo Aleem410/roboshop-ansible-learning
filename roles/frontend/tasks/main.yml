@@ -1,48 +1,40 @@
 - name: install nginx
-  hosts: localhost
-  tasks:
-    - name: nginx latest install
-      ansible.builtin.yum:
-        name: nginx
-        state: installed
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
 
-- name: start nginx
-  hosts: localhost
-  tasks:
-    - name: start nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: yes
-
-- name: download nginx docs
-  hosts: localhost
-  tasks:
-    - name: download nginx docs
-      ansible.builtin.shell: curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-
-- name: remove existing content
-  hosts: localhost
-  tasks:
-    - name: remove file
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: absent
-
-- name: Unarchive a file that is already
-  hosts: localhost
-  tasks:
-    - name: unarchieve file
-      ansible.builtin.unarchive:
-        src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-        dest: "/tmp"
-        remote_src: yes
-
-- name: copy to roboshop configuration
-  hosts: localhost
-  tasks:
-    - name: copy roboshop content
-      ansible.builtin.copy:
-        src: /tmp/frontend-main/localhost.conf
-        dest: /etc/nginx/default.d/roboshop.conf
-        remote_src: yes
+#- name: start nginx
+#  ansible.builtin.service:
+#    name: nginx
+#    state: started
+#    enabled: yes
+#
+#- name: download nginx docs
+#
+#      ansible.builtin.shell: curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+#
+#- name: remove existing content
+#  hosts: localhost
+#  tasks:
+#    - name: remove file
+#      ansible.builtin.file:
+#        path: /usr/share/nginx/html
+#        state: absent
+#
+#- name: Unarchive a file that is already
+#  hosts: localhost
+#  tasks:
+#    - name: unarchieve file
+#      ansible.builtin.unarchive:
+#        src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+#        dest: "/tmp"
+#        remote_src: yes
+#
+#- name: copy to roboshop configuration
+#  hosts: localhost
+#  tasks:
+#    - name: copy roboshop content
+#      ansible.builtin.copy:
+#        src: /tmp/frontend-main/localhost.conf
+#        dest: /etc/nginx/default.d/roboshop.conf
+#        remote_src: yes
