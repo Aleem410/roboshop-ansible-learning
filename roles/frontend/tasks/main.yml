@@ -33,12 +33,12 @@
     dest: "{{ APP_LOC }}"
     remote_src: yes
 
-#
-#  PRINT "extracting app content"
-#  unzip -o /tmp/${COMPONENT}.zip &>>$LOG
-#  STAT $?
-#  COMPONENT=frontend
-#  source common.sh
+- name: copy roboshop file
+  ansible.builtin.copy:
+    src: "{{ APP_LOC }}/{{ COMPONENT }}-main/localhost.conf"
+    dest: "/etc/nginx/default.d/roboshop.conf
+    remote_src: yes
+
 
 #
 #  APP_LOC=/usr/share/nginx/html
