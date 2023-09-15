@@ -27,14 +27,14 @@
 - name: copy extract content to location
   ansible.builtin.copy:
     src: /tmp/{{ COMPONENT }}-main
-    dest: "{{ APP_LOC }}"
+    dest: "{{ APP_LOC }}/"
     remote_src: yes
 
-- name: copy roboshop file
-  ansible.builtin.copy:
-    src: "{{ APP_LOC }}/{{ COMPONENT }}-main/localhost.conf"
-    dest: "/etc/nginx/default.d/roboshop.conf"
-    remote_src: yes
+#- name: copy roboshop file
+#  ansible.builtin.copy:
+#    src: "{{ APP_LOC }}/{{ COMPONENT }}-main/localhost.conf"
+#    dest: "/etc/nginx/default.d/roboshop.conf"
+#    remote_src: yes
 
 - name: Enable nginx service
   ansible.builtin.systemd:
