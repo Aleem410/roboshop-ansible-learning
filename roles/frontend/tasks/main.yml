@@ -8,8 +8,6 @@
   ansible.builtin.user:
     name: "{{ APP_USER }}"
 
-
-
 - name: Download app content
   ansible.builtin.get_url:
     url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
@@ -19,7 +17,6 @@
   ansible.builtin.file:
     path: "{{ APP_LOC }}"
     state: absent
-
 
 - name: download and extracting app contect
   ansible.builtin.unarchive:
@@ -40,57 +37,5 @@
     remote_src: yes
 
 
-#
-#  APP_LOC=/usr/share/nginx/html
-#
-#  DOWNLOAD_APP_CODE
-#
-#  mv frontend-main/static/* . &>>{LOG}
-#  mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>{LOG}
-#
-#  PRINT "Update RoboShop Configuration"
-#  sed -i -e '/catalogue/ s/localhost/dev-catalogue.mydevops410.online/' -e '/user/ s/localhost/dev-user.mydevops410.online/' -e '/cart/ s/localhost/dev-cart.mydevops410.online/' -e '/shipping/ s/localhost/dev-shipping.mydevops410.online/' -e '/payment/ s/localhost/dev-payment.mydevops410.online/' /etc/nginx/default.d/roboshop.conf
-#  STAT $?
-#
-#  PRINT "enable nginx"
-#  systemctl enable nginx &>>{LOG}
-#  STAT $?
-#
-#  PRINT "restart nginx"
-#  systemctl restart nginx &>>{LOG}
-#  STAT $?
-#- name: start nginx
-#  ansible.builtin.service:
-#    name: nginx
-#    state: started
-#    enabled: yes
-#
-#- name: download nginx docs
-#
-#      ansible.builtin.shell: curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-#
-#- name: remove existing content
-#  hosts: localhost
-#  tasks:
-#    - name: remove file
-#      ansible.builtin.file:
-#        path: /usr/share/nginx/html
-#        state: absent
-#
-#- name: Unarchive a file that is already
-#  hosts: localhost
-#  tasks:
-#    - name: unarchieve file
-#      ansible.builtin.unarchive:
-#        src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-#        dest: "/tmp"
-#        remote_src: yes
-#
-#- name: copy to roboshop configuration
-#  hosts: localhost
-#  tasks:
-#    - name: copy roboshop content
-#      ansible.builtin.copy:
-#        src: /tmp/frontend-main/localhost.conf
-#        dest: /etc/nginx/default.d/roboshop.conf
-#        remote_src: yes
+
+
