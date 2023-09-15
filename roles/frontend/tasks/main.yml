@@ -7,29 +7,26 @@
   when: APP_USER is defined
   ansible.builtin.user:
     name: "{{ APP_USER }}"
-- name: Add application user
-  ansible.builtin.user:
-    name: RoboShop
+
+
+
+- name: Download app content
+  ansible.builtin.get_url:
+    url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
+    dest: /tmp/{{ COMPONENT }}.zip
+
+- name: remove previous app version
+  ansible.builtin.file:
+    path: {{ APP_LOC }}
     state: absent
-    remove: yes
 
 
-#  if [ ! -z "$APP_USER" ]; then
-#  PRINT "Adding application user"
-#  id roboshop &>>$LOG
-#  if [ $? -ne 0 ]; then
-#  useradd roboshop &>>$LOG
-#  fi
-#  STAT $?
-#  fi
-#  PRINT "download app content"
-#  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
-#  STAT $?
-#
-#  PRINT "remove previous "
-#  cd $APP_LOC &>>$LOG
-#  rm -rf ${CONTENT} &>>$LOG
-#  STAT $?
+- name: download and extracting app contect
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
+    dest: "/tmp"
+    remote_src: yes
+
 #
 #  PRINT "extracting app content"
 #  unzip -o /tmp/${COMPONENT}.zip &>>$LOG
