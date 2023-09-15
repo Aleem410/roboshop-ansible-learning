@@ -32,6 +32,6 @@
 
 - name: copy roboshop file
   ansible.builtin.copy:
-    src: "{{ APP_LOC }}/{{ COMPONENT }}-main/localhost.conf"
-    dest: "/etc/nginx/default.d/roboshop.conf
+    src: "{{ APP_LOC }}"/{{ COMPONENT }}-main/localhost.conf
+    dest: "/etc/nginx/default.d/roboshop.conf"
     remote_src: yes
