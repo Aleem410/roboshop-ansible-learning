@@ -7,6 +7,11 @@
   when: APP_USER is defined
   ansible.builtin.user:
     name: "{{ APP_USER }}"
+- name: Add application user
+  ansible.builtin.user:
+    name: RoboShop
+    state: absent
+    remove: yes
 
 
 #  if [ ! -z "$APP_USER" ]; then
