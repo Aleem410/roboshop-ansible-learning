@@ -35,7 +35,3 @@
     src: "{{ APP_LOC }}/{{ COMPONENT }}-main/localhost.conf"
     dest: "/etc/nginx/default.d/roboshop.conf
     remote_src: yes
-
-
-
-
