@@ -3,6 +3,11 @@
     name: nginx
     state: installed
 
+- name: include download app role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-app-content
+
 - name: copy roboshop configuration file
   ansible.builtin.copy:
     src: roboshop.conf
