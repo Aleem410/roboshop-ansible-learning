@@ -1,0 +1,7 @@
+- name: Add the Roboshop application user
+  when: APP_USER is defined
+  ansible.builtin.user:
+    name: "{ { APP-USER } }"
+
+
+
