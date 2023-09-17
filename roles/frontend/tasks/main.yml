@@ -3,38 +3,10 @@
     name: nginx
     state: installed
 
-- name: Add application user
-  when: APP_USER is defined
-  ansible.builtin.user:
-    name: "{{ APP_USER }}"
-
-#- name: Download app content
-#  ansible.builtin.get_url:
-#    url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
-#    dest: /tmp/{{ COMPONENT }}.zip
-
-- name: remove previous app version
-  ansible.builtin.file:
-    path: "{{ APP_LOC }}"
-    state: absent
-
-- name: download and extracting app contect
-  ansible.builtin.unarchive:
-    src: https://github.com/Aleem410/{{ COMPONENT }}/archive/refs/heads/main.zip
-    dest: "/tmp"
-    remote_src: yes
-
-- name: copy extract content to location
-  ansible.builtin.copy:
-    src: /tmp/{{ COMPONENT }}-main/
-    dest: "{{ APP_LOC }}/"
-    remote_src: yes
-
 - name: copy roboshop configuration file
   ansible.builtin.copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
-
 
 - name: Enable nginx service
   ansible.builtin.systemd:
