@@ -1,0 +1,19 @@
+- name: rpm nodesource
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: include download app content role
+  ansible.builtin.include_role:
+    role: common
+    tasks_from: download-app-content
+
+
+- name: Install npm package.
+  community.general.npm:
+    path: "{ { APP_LOC } }/catalogue"
+    state: present
+
