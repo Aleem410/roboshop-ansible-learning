@@ -6,7 +6,7 @@
 - name: include download app role
   ansible.builtin.include_role:
     name: common
-    tasks_from: download-app-content
+    tasks_from: download.yml
 
 - name: copy roboshop configuration file
   ansible.builtin.copy:
