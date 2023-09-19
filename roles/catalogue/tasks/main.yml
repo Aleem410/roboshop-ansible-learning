@@ -14,6 +14,6 @@
 
 - name: Install npm package.
   community.general.npm:
-    path: "{ { APP_LOC } }/catalogue"
+    path: "{{ APP_LOC }}/catalogue"
     state: present
 
