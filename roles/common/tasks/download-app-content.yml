@@ -1,7 +1,7 @@
 - name: Add the Roboshop application user
   when: APP_USER is defined
   ansible.builtin.user:
-    name: "{ { APP_USER } }"
+    name: "{{ APP_USER }}"
 
 - name: Remove previous file
   ansible.builtin.file:
