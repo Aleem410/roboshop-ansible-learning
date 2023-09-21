@@ -4,4 +4,4 @@
     - name: print a parameter
       ansible.builtin.debug:
 #        msg: "{{ lookup('aws_ssm', 'params.dev.catalogue', region='us-east-1' ) }}"
-        msg: "{{ lookup('amazon.aws.aws_ssm', 'params.dev.catalogue' region='us-east-1 ) }}"
+        msg: "{{ lookup('amazon.aws.aws_ssm', 'params.dev.catalogue', region='us-east-1' ) }}"
