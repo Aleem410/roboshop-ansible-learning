@@ -12,3 +12,4 @@
       community.aws.ssm_parameter:
         name: "params.dev.mongo"
         value: "true"
+        region: "us-east-1"
