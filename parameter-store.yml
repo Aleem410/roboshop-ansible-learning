@@ -11,5 +11,5 @@
     - name: create parameter
       community.aws.ssm_parameter:
         name: "params.dev.mongo"
-        value: "true"
+        value: "100"
         region: "us-east-1"
