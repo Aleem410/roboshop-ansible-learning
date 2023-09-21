@@ -6,6 +6,8 @@
 #        msg: "{{ lookup('aws_ssm', 'params.dev.catalogue', region='us-east-1' ) }}"
 
 - name: create new parameter in parameter store
-  community.aws.ssm_parameter:
+  hosts: localhost
+  tasks:
+    community.aws.ssm_parameter:
     name: "params.dev.mongo"
     value: "true"
