@@ -9,5 +9,5 @@
   hosts: localhost
   tasks:
     community.aws.ssm_parameter:
-    name: "params.dev.mongo"
-    value: "true"
+     name: "params.dev.mongo"
+     value: "true"
