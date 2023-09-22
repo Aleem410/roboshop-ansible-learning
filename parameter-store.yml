@@ -10,6 +10,9 @@
   tasks:
     - name: create parameter
       community.aws.ssm_parameter:
-        name: "params.dev.mongo"
-        value: "100"
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
         region: "us-east-1"
+      loop:
+        - {name: params.dev.catalogue.MONGO, value: true }
+        - {name: params.dev.catalogue.MONGO_URL, value: 'mongodb://172.31.88.195:27017/catalogue' }
