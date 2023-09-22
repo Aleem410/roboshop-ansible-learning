@@ -9,7 +9,7 @@
 - name: include download app content role
   ansible.builtin.include_role:
     role: common
-    tasks_from: download.yml
+    tasks_from: download
 
 
 - name: Install npm package.
@@ -19,5 +19,5 @@
 - name: restart catalogue service
   ansible.builtin.include_role:
     role: common
-    tasks_from: systemd.yml
+    tasks_from: systemd
 
