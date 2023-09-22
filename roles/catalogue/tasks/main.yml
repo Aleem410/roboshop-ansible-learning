@@ -1,6 +1,6 @@
 - name: include nodejs task
   ansible.builtin.include_role:
-    role: common
+    name: common
     task_from: nodejs
 
 
