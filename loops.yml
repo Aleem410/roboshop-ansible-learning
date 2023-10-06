@@ -7,6 +7,7 @@
 #      loop:
 #        - apple
 #        - orange
+
 - name: demo on loops in list of maps
   hosts: localhost
   tasks:
